@@ -30,10 +30,14 @@ body {
     font-weight: var(--font-regular);
     font-family: var(--font-principal);
     color: var(--grayish-blue);
+    height: 100%;
+}
+
+.container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100%;
 }
 
 /* ------ Title ------ */
@@ -65,48 +69,44 @@ body {
 }
 
 /* ------ Card ------ */
-.card{
-    /* background: gray; */
+.card {
     position: relative;
     height: 165px;
     width: 250px;
     padding: 30px;
-    /* height: 225px;
-    width: 310px; */
     border-radius: 10px;
-    /* margin-top: 80px; */
     box-shadow: 0px 10px 15px -7px var(--grayish-blue);
 }
 
-.card h2{
+.card h2 {
     font-weight: var(--font-bold);
     color: var(--very-dark-blue);
     font-size: 24px;
 }
 
-.card p{
+.card p {
     font-size: 13px;
     line-height: 24px;
     margin-top: 12px;
 }
 
-.card img{
+.card img {
     position: absolute;
     bottom: 30px;
     right: 30px;
 }
 
-.supervisor{
+.supervisor {
     border-top: 4px solid var(--cyan);
     margin-top: 80px;
 }
 
 .team {
-    border-top: 4px solid var(--red);    
+    border-top: 4px solid var(--red);
 }
 
 .karma {
-    border-top: 4px solid var(--orange);    
+    border-top: 4px solid var(--orange);
 }
 
 .calculator {
@@ -114,7 +114,9 @@ body {
     margin-bottom: 80px;
 }
 
-.team, .karma, .calculator{
+.team,
+.karma,
+.calculator {
     margin-top: 25px;
 }
 
@@ -132,4 +134,65 @@ body {
 
 .attribution a {
     color: hsl(var(--color-attribution));
+}
+
+/* ------ Responsivo ------ */
+@media only screen and (min-width: 1110px) {
+
+    body {
+        height: 100vh;
+    }
+
+    .container {
+        /* display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center; */
+        display: grid;
+        grid-template-areas:
+            'title title title'
+            'left top right'
+            'left below right';
+    }
+
+    .title {
+        transform: scale(1.5);
+        width: 505px;
+        padding: 0 300px;
+        grid-area: title;
+        margin-bottom: 70px;    
+    }
+
+    .title p {
+        transform: scale(0.7);
+    }
+
+    .card {
+        transform: scale(1.12);
+        margin: unset;
+    }
+
+    .card h2,
+    .card p {
+        transform: scale(0.9);
+    }
+
+    .supervisor {
+        grid-area: left;
+        margin-right: 30px;
+    }
+
+    .team {
+        grid-area: top;
+    }
+
+    .karma {
+        grid-area: below;
+        margin-top: 60px;
+    }
+
+    .calculator {
+        grid-area: right;
+        margin-left: 30px;
+    }
 }
